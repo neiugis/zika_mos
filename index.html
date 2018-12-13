@@ -103,8 +103,16 @@
       max : max
   }
 }
-
+        
+mosquito1 = L.icon({
+            iconUrl: 'mosquito.png'
+        });  
           
+mosquito2 = L.icon({
+            iconUrl: 'mos.png'
+        });    
+          
+
 // The function to draw the proportional symbols
 function createPropSymbols(timestamps, data) {
 
@@ -114,29 +122,15 @@ function createPropSymbols(timestamps, data) {
       // To alter this, the pointToLayer function needs to be used
       pointToLayer: function(feature, latlng) {
 
-        // if () {
-//          return L.circleMarker(latlng, { // we use circle marker for the points
-//              fillColor: "#501e65",  // fill color of the circles
-//              color: '#501e65',      // border color of the circles
-//              weight: 2,             // circle line weight in pixels
-//              fillOpacity: 0.5       // fill opacity (0-1)
-//          }).on({
-               
-//        var customIcon = L.icon({
-//            iconUrl: 'mosquito.png', // url that links to the icon image file
-//            iconSize:     calcSize(timestamps[0]), // size of the icon image in pixels
-//            iconAnchor:   [10,10], // the top left corner of the icon will be aligned so that this point is at the marker's geographical location
-//            popupAnchor:  [0, -75] // point from which the popup should open, relative to the iconAnchor
-//        });
-          
-//          return L.marker(latlng, {icon: customIcon}).on({
         return L.marker(latlng).on({
                 mouseover: function(e) {
                     this.openPopup();
+                    this.setIcon(mosquito2);
 
                 },
                 mouseout: function(e) {
                     this.closePopup();
+                    this.setIcon(mosquito1)
 
                 }
         });
